@@ -1,17 +1,12 @@
-import { useState } from "react";
-
-function ProgressBar() {
-    // const [progress, setProgress] = useState(5);
-    let progress = 5;
+function ProgressBar( {progress} ) {
+    let percent = Math.round(100*(progress/10));
 
     return (
         <div className="mt-4 mb-4">
-            <p>{progress}% 1 of 20</p>
+            <p>{percent}% {progress} of 10</p>
 
             <div className="progress">
-                <div className="progress-bar" role="progressbar" style={{ width: `${progress}%` }}>
-                    {/* {progress}% */}
-                </div>
+                <div className="progress-bar" role="progressbar" style={{ width: `${percent}%` }}></div>
             </div>
         
         </div>
