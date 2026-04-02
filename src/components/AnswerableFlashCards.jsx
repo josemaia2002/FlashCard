@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FlashCard from "./FlashCard";
 import NavBar from "./NavBar";
 import ProgressBar from "./ProgressBar";
 
 function AnswerableFlashCards ( {flashCards} ) {
-    const [currentIndex, setCurrentIndex] = useState(1);
     const [showAnswer, setShowAnswer] = useState(false);
+
+    const [currentIndex, setCurrentIndex] = useState(() => {
+        const savedIndex = localStorage.getItem("flashCardHistory");
+        if(savedIndex) {
+            return JSON.parse(savedIndex);
+        }
+        return 1;
+    });
+
+    useEffect(() => {
+        localStorage.setItem("flashCardHistory", JSON.stringify(currentIndex))
+    }, [currentIndex]);
+
 
     return(
         <div className="container d-flex flex-column align-items-center mt-4">
