@@ -1,15 +1,15 @@
-function NavBar( {progress, setProgress, showAnswer, setShowAnswer} ) {
+function NavBar( {currentIndex, setCurrentIndex, showAnswer, setShowAnswer, totalFlashCards} ) {
 
     function nextCard() {
-        if(progress < 10) {
-            setProgress(progress + 1);
+        if(currentIndex < totalFlashCards) {
+            setCurrentIndex(currentIndex + 1);
             setShowAnswer(false)
         }
     }
 
     function previousCard() {
-        if(progress > 1) {
-            setProgress(progress - 1);
+        if(currentIndex > 1) {
+            setCurrentIndex(currentIndex - 1);
             setShowAnswer(false)
         }
     }
@@ -20,7 +20,7 @@ function NavBar( {progress, setProgress, showAnswer, setShowAnswer} ) {
 
     return (
         <div className="d-flex justify-content-around p-2 w-100">
-            <button onClick={previousCard} className="btn btn-primary">Previous</button>
+            <button onClick={previousCard} disabled={currentIndex === 1} className="btn btn-primary">Previous</button>
 
             {showAnswer ? (
                 <button onClick={toggleAnswer} className="btn btn-primary">Hide Answer</button>
@@ -28,7 +28,7 @@ function NavBar( {progress, setProgress, showAnswer, setShowAnswer} ) {
                 <button onClick={toggleAnswer} className="btn btn-primary">Show Answer</button>
             )}
             
-            <button onClick={nextCard} className="btn btn-primary">Next</button>
+            <button onClick={nextCard} disabled={currentIndex === totalFlashCards} className="btn btn-primary">Next</button>
         </div>
     );
 }

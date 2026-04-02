@@ -1,9 +1,9 @@
-function ProgressBar( {progress} ) {
-    let percent = Math.round(100*(progress/10));
+function ProgressBar( {currentIndex, totalFlashCards} ) {
+    let percent = Math.round(100*(currentIndex/totalFlashCards));
 
     return (
         <div className="mt-4 mb-4">
-            <p>{percent}% {progress} of 10</p>
+            <p>{percent}% {currentIndex} of {totalFlashCards}</p>
 
             <div className="progress">
                 <div className="progress-bar" role="progressbar" style={{ width: `${percent}%` }}></div>
