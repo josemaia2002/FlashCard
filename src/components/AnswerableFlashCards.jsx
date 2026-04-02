@@ -24,7 +24,7 @@ function AnswerableFlashCards ( {flashCards} ) {
             <h2>Flash Cards</h2>
             <div className="vh-100 w-75 card d-flex align-items-center justify-content-start mt-4">
                 <ProgressBar currentIndex={currentIndex} totalFlashCards={flashCards.length}/>
-                <FlashCard currentIndex={currentIndex} flashCards={flashCards} showAnswer={showAnswer}/>
+                <FlashCard currentIndex={currentIndex} flashCards={flashCards} showAnswer={showAnswer} setShowAnswer={setShowAnswer}/>
                 <NavBar currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} showAnswer={showAnswer} setShowAnswer={setShowAnswer} totalFlashCards={flashCards.length}/>
             </div>
         </div>
