@@ -3,12 +3,14 @@ function NavBar( {progress, setProgress, showAnswer, setShowAnswer} ) {
     function nextCard() {
         if(progress < 10) {
             setProgress(progress + 1);
+            setShowAnswer(false)
         }
     }
 
     function previousCard() {
         if(progress > 1) {
             setProgress(progress - 1);
+            setShowAnswer(false)
         }
     }
 
