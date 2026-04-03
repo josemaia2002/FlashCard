@@ -1,9 +1,33 @@
 .flash-card {
     cursor: pointer;
     transition: all 0.3s ease;
+    perspective: 1000px;
 }
 
 .flash-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.flash-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d; 
+}
+
+.flash-card-front, .flash-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; 
+}
+
+.flash-card-back {
+  transform: rotateY(180deg);
+}  
+
+.is-flipped {
+    transform: rotateY(180deg);
 }
