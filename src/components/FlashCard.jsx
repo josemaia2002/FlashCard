@@ -1,16 +1,12 @@
 import './FlashCard.css'
 
-function FlashCard( {flashCards, currentIndex, showAnswer, setShowAnswer} ) {
+function FlashCard( {flashCards, currentIndex, showAnswer, toggleAnswer} ) {
 
     if(!flashCards.length) {
         return <p>No cards available!</p>;
     }
     
     const currentCard = flashCards[currentIndex - 1];
-
-    function toggleAnswer() {
-        setShowAnswer(!showAnswer);
-    }
 
     return (
         <div onClick={toggleAnswer} className="flash-card card text-center w-50 h-50 mb-4 p-4">
