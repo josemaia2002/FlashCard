@@ -100,9 +100,9 @@ function AnswerableFlashCards ( {originalFlashCards} ) {
     }
 
     return(
-        <div className="container d-flex flex-column align-items-center mt-4">
+        <div className="vh-100 container d-flex flex-column align-items-center mt-2">
             <h2>Flash Cards</h2>
-            <div className="vh-100 card d-flex align-items-center justify-content-start mt-4 flashcards-container">
+            <div className="h-100 card d-flex align-items-center justify-content-start mt-2 flashcards-container">
                 <ProgressBar currentIndex={currentIndex} totalFlashCards={flashCards.length}/>
                 <FlashCard currentIndex={currentIndex} flashCards={flashCards} showAnswer={showAnswer} toggleAnswer={toggleAnswer}/>
                 <NavBar currentIndex={currentIndex} previousCard={previousCard} nextCard={nextCard} shuffleCards={shuffleCards} totalFlashCards={flashCards.length}/>
