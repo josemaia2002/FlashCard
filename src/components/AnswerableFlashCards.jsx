@@ -6,6 +6,7 @@ import ProgressBar from "./ProgressBar";
 function AnswerableFlashCards ( {originalFlashCards} ) {
     const [flashCards, setFlashCards] = useState(originalFlashCards);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const [currentIndex, setCurrentIndex] = useState(() => {
         const savedIndex = localStorage.getItem("flashCardHistory");
@@ -38,7 +39,7 @@ function AnswerableFlashCards ( {originalFlashCards} ) {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [currentIndex, showAnswer]);
+    }, [currentIndex, showAnswer, isAnimating]);
 
     const shuffleArray = (array) => {
         const shuffled = [...array]; 
@@ -61,12 +62,16 @@ function AnswerableFlashCards ( {originalFlashCards} ) {
     }
 
     function nextCard() {
+        if(isAnimating) return;
+
         if(currentIndex < flashCards.length) {
             if(showAnswer){
                 setShowAnswer(false);
+                setIsAnimating(true);
 
                 setTimeout(() => {
                     setCurrentIndex(currentIndex + 1);
+                    setIsAnimating(false);
                 }, 1600);
             }
             else {
@@ -76,12 +81,16 @@ function AnswerableFlashCards ( {originalFlashCards} ) {
     }
 
     function previousCard() {
+        if(isAnimating) return;
+
         if(currentIndex > 1) {
             if(showAnswer){
                 setShowAnswer(false);
+                setIsAnimating(true);
 
                 setTimeout(() => {
                     setCurrentIndex(currentIndex - 1);
+                    setIsAnimating(false);
                 }, 1600);
             }
             else {
